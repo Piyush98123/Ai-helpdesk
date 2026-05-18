@@ -1,0 +1,53 @@
+spring:
+  application:
+    name: Ai-helpdesk-backend
+
+  #database configuration
+  datasource:
+    url: jdbc:postgresql://localhost:5432/helpdesk_db
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+    autocommit: false
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  # ollama
+  ai:
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        options:
+          model: llama3.2
+          temperature: 0.3
+    chat:
+      memory:
+        repository:
+          jdbc:
+            initialize-schema: always
+
+
+logging:
+  level:
+    org:
+      springframework:
+        ai:
+          chat:
+            client:
+              advisor: DEBUG
+
+
+
+
+server:
+  port: 8090
+
+
+# ollama
+
+
