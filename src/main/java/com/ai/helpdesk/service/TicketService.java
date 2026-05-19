@@ -23,8 +23,6 @@ public class TicketService {
     public Tickets createTicket(Tickets tickets){
         log.info("saving data {}",tickets);
         tickets.setId(null);
-        tickets.setCreatedAt(null);
-        tickets.setUpdatedAt(null);
         return ticketRepository.save(tickets);
     }
 
@@ -37,8 +35,9 @@ public class TicketService {
     }
 
     @Transactional
-    public Tickets updateTicket(Tickets tickets){
-        return ticketRepository.save(tickets);
+    public Tickets updateTicket(Tickets ticket) {
+        log.info("Updating ticket #{}", ticket.getId());
+        return ticketRepository.save(ticket);
     }
 
 }

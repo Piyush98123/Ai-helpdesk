@@ -31,8 +31,11 @@ public class Tickets {
     @Enumerated(EnumType.STRING)
     private Priority priority;
 
-    @Column(unique = true)
     private String username;
+
+    @Column(name = "user_email")
+    private String userEmail;
+
 
     @Enumerated(EnumType.STRING)
     private Status status;
@@ -41,7 +44,7 @@ public class Tickets {
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone = "UTC")
     private LocalDateTime  createdAt;
 
-    @Column(name = "updated_at", updatable = false)
+    @Column(name = "updated_at")
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", timezone = "UTC")
     private LocalDateTime updatedAt;
 
